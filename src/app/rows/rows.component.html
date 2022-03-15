@@ -1,0 +1,112 @@
+<div class="card">
+  <form [formGroup]="userForm">
+    <div class="box mt-5">
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="form-group mt-4">
+            <label>Name</label>
+          </div>
+          <div class="form-row" style="margin-top: -10px">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="name"
+                placeholder="Name"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group mt-4">
+            <label>Address</label>
+          </div>
+          <div class="form-row" style="margin-top: -10px">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="address"
+                placeholder="Address"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group mt-4">
+            <label>Contact No</label>
+          </div>
+          <div class="form-row" style="margin-top: -10px">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="contactNo"
+                placeholder="Contact No"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group mt-4">
+            <label>Gender</label>
+          </div>
+          <div class="form-row" style="margin-top: -10px">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="gender"
+                placeholder="Gender"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-row mt-4">
+          <div class="col-6">
+            <button
+              type="button"
+              class="btn btn-primary"
+              [disabled]="!userForm.valid"
+              (click)="addItem()"
+            >
+              Add</button
+            >&nbsp;
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-primary" (click)="resetForm()">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="col-md-8 mt-4 mb-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Contact No</th>
+          <th>Gender</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listData">
+          <td>{{ item.name }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.contactNo }}</td>
+          <td>{{ item.gender }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="removeItem(item)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>{{ userForm.valid }}</p>
+  </div>
+</div>
